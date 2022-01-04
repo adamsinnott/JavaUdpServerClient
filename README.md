@@ -1,5 +1,5 @@
 # JavaUdpServerClient
-A Java implementation of a Datagram UDP Server and Client that send and recieve UDP packets between each other. A copy of this blog http://helloraspberrypi.blogspot.com/2016/05/java-datagramudp-server-and-client-run.html
+A Java implementation of a Datagram UDP Server and Client that can send and recieve UDP packets between each other. A copy of this blog http://helloraspberrypi.blogspot.com/2016/05/java-datagramudp-server-and-client-run.html
 
 Clone the repo and using a terminal run 
 
