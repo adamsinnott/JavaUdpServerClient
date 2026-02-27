@@ -1,26 +1,54 @@
-# JavaUdpServerClient
-A Java implementation of a Datagram UDP Server and Client that can send and recieve UDP packets between each other. A copy of this blog http://helloraspberrypi.blogspot.com/2016/05/java-datagramudp-server-and-client-run.html
+# Java UDP Server/Client
 
-Clone the repo and using a terminal run 
+## Overview
+This repository is a lightweight Java UDP client/server proof of concept created to understand datagram networking and Wake-on-LAN communication patterns.
 
-`javac JavaUdpServer.java`
+The project was intentionally kept small and dependency-free so the network behavior is easy to inspect, test, and extend.
 
-`javac JavaUdpClient.java`
+## Project Goal
+This code was built as a learning and validation step before implementing Wake-on-LAN behavior in Android applications.
 
-Open up two terminals and in one run 
+It demonstrates:
+- UDP socket setup and communication in Java
+- Request/response behavior over datagrams
+- Basic service-style server behavior that listens continuously on a fixed port
 
-`java JavaUdpServer`
+## Professional Context
+This project was used to de-risk implementation decisions before mobile development work, specifically:
+- validating low-level UDP behavior in a controlled Java environment
+- confirming packet flow and response handling before Android integration
+- creating a clear baseline reference for later product-facing Wake-on-LAN features
 
-then in the other run
+## Architecture
+- `JavaUdpServer.java`: starts a UDP listener on port `4445`, receives packets, and responds with the current server timestamp
+- `JavaUdpClient.java`: sends a UDP packet to `127.0.0.1:4445`, waits for a response, and prints the returned timestamp
 
-`java JavaUdpClient`
+## Run Locally
+Compile:
 
-You should then see a line in the JavaUdpServer terminal saying
+```bash
+javac JavaUdpServer.java
+javac JavaUdpClient.java
+```
 
-`Request from: /127.0.0.1:<<random port>>`
+Run in separate terminals:
 
-The client will show something like this
+```bash
+java JavaUdpServer
+```
 
-`Runtime Java: 11.0.7+10-post-Ubuntu-2ubuntu218.04
-JavaUdpClient running, connect to: 127.0.0.1:4445
-Thu May 21 11:14:58 BST 2020`
+```bash
+java JavaUdpClient
+```
+
+Expected behavior:
+- Server logs a request source, for example: `Request from: /127.0.0.1:<random_port>`
+- Client prints Java runtime info, target endpoint, and a timestamp returned by the server
+
+## Related Repositories
+- Android UDP client prototype: https://github.com/adamsinnott/AndroidDatagramUdpClient
+- Wake-on-LAN Android implementation: https://github.com/adamsinnott/WakeOnLAN
+
+## Notes
+- This repository is a focused learning project, not a production-ready service.
+- The original inspiration came from Oracle UDP datagram examples and early community tutorials, then was adapted for Wake-on-LAN experimentation.
